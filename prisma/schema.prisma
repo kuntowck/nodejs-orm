@@ -13,3 +13,7 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model sample {
+  id   String @id
+  name String
+}
