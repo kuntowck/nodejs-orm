@@ -23,19 +23,32 @@ describe("prisma client", () => {
   //   expect(count).toBe(2);
   // });
 
-  it("should can update many records", async () => {
-    // updateMany != update
-    // update: records yang primary atau unique
-    // updateMany: semua records
-    const { count } = await prismaClient.customer.updateMany({
-      data: {
-        email: "kuntowicaksono@gmail.com",
-      },
+  // it("should can update many records", async () => {
+  //   // updateMany != update
+  //   // update: records yang primary atau unique
+  //   // updateMany: semua records
+  //   const { count } = await prismaClient.customer.updateMany({
+  //     data: {
+  //       email: "kuntowicaksono@gmail.com",
+  //     },
+  //     where: {
+  //       name: "kunto wicaksono",
+  //     },
+  //   });
+
+  //   expect(count).toBe(1);
+  // });
+
+  it("should can delete many records", async () => {
+    // deleteMany != delete
+    // delete: records yang primary atau unique
+    // deleteMany: semua records
+    const { count } = await prismaClient.customer.deleteMany({
       where: {
-        name: "kunto wicaksono",
+        name: "none",
       },
     });
 
-    expect(count).toBe(1);
+    expect(count).toBe(0);
   });
 });
