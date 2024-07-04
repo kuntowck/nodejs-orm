@@ -34,10 +34,23 @@ describe("prisma client", () => {
   //   expect(customer.phone).toBe("085156655677");
   // });
 
+  // it("should be able to read data customer", async () => {
+  //   const customer = await prismaClient.customer.findUnique({
+  //     where: {
+  //       email: "kuntowck@gmail.com"
+  //     }
+  //   });
+
+  //   expect(customer.id).toBe("kunto01");
+  //   expect(customer.email).toBe("kuntowck@gmail.com");
+  //   expect(customer.name).toBe("kunto wicaksono");
+  //   expect(customer.phone).toBe("085156655677");
+  // });
+
   it("should be able to read data customer", async () => {
-    const customer = await prismaClient.customer.findUnique({
+    const customer = await prismaClient.customer.delete({
       where: {
-        email: ""
+        email: "kuntowck@gmail.com"
       }
     });
 
