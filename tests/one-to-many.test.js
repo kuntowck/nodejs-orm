@@ -16,4 +16,34 @@ describe("prisma client", () => {
 
     console.log(comment);
   });
+
+  it("should can insert with many relation one to many", async () => {
+    const customer = await prismaClient.customer.create({
+      data: {
+        id: "kunto02",
+        name: "kunto",
+        email: "kuntowicaksono2@gmail.com",
+        phone: "0817676621123",
+        comments: {
+          createMany: {
+            data: [
+              {
+                title: "comment 1",
+                description: "description comment 1",
+              },
+              {
+                title: "comment 2",
+                description: "description comment 2",
+              },
+            ],
+          },
+        },
+      },
+      include: {
+        comments: true,
+      },
+    });
+
+    console.log(customer);
+  });
 });
