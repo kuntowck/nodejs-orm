@@ -29,4 +29,25 @@ describe("prisma client", () => {
 
     console.log(customer);
   });
+
+  it("should can find many with many to many relation", async () => {
+    const customer = await prismaClient.customer.findMany({
+      where: {
+        likes: {
+          some: {
+            product: {
+              name: {
+                contains: "A",
+              },
+            },
+          },
+        },
+      },
+      include: {
+        likes: true,
+      },
+    });
+
+    console.log(customer);
+  });
 });
