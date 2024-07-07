@@ -68,4 +68,23 @@ describe("prisma client", () => {
 
     console.log(customer);
   });
+
+  it("should find many implicit many to many relation", async () => {
+    const customer = await prismaClient.customer.findMany({
+      where: {
+        loves: {
+          some: {
+            name: {
+              contains: "A",
+            },
+          },
+        },
+      },
+      include: {
+        loves: true,
+      },
+    });
+
+    console.log(customer);
+  });
 });
