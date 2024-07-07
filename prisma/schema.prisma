@@ -26,6 +26,7 @@ model Customer {
   wallet  Wallet?
   comment Comment[] // best practice using plural
   likes   Like[]
+  loves   Product[] @relation("loves")
 
   @@map("customers")
 }
@@ -50,12 +51,13 @@ model Wallet {
 }
 
 model Product {
-  id       String @id @db.VarChar(100)
-  name     String @db.VarChar(100)
-  price    Int    @db.Int
-  stock    Int    @db.SmallInt
-  category String @db.VarChar(100)
+  id       String     @id @db.VarChar(100)
+  name     String     @db.VarChar(100)
+  price    Int        @db.Int
+  stock    Int        @db.SmallInt
+  category String     @db.VarChar(100)
   likedby  Like[]
+  lovedby  Customer[] @relation("loves")
 
   @@map("products")
 }
