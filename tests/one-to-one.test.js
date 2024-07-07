@@ -25,11 +25,10 @@ describe("prisma client", () => {
         email: "handitanto@gmail.com",
         phone: "081912181211",
         wallet: {
-          create:
-            {
-              id: 'tito09',
-              balance: 1000000,
-            },
+          create: {
+            id: "tito09",
+            balance: 1000000,
+          },
         },
       },
       include: {
@@ -44,6 +43,21 @@ describe("prisma client", () => {
     const customer = await prismaClient.customer.findFirst({
       where: {
         id: "kunto01",
+      },
+      include: {
+        wallet: true,
+      },
+    });
+
+    console.log(customer);
+  });
+
+  it("should be able to find many one to one", async () => {
+    const customer = await prismaClient.customer.findMany({
+      where: {
+        wallet: {
+          isNot: null,
+        },
       },
       include: {
         wallet: true,
