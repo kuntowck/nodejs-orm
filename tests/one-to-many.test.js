@@ -46,4 +46,23 @@ describe("prisma client", () => {
 
     console.log(customer);
   });
+
+  it("should can find many with relaton filter", async () => {
+    const customer = await prismaClient.customer.findMany({
+      where: {
+        comments: {
+          some: {
+            title: {
+              contains: "komen",
+            },
+          },
+        },
+      },
+      include: {
+        comments: true,
+      },
+    });
+
+    console.log(customer);
+  });
 });
