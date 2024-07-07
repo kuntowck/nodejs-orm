@@ -16,4 +16,17 @@ describe("prisma client", () => {
 
     console.log(like);
   });
+
+  it("should can find one with many to many relation ", async () => {
+    const customer = await prismaClient.customer.findUnique({
+      where: {
+        id: "kunto02",
+      },
+      include: {
+        likes: true,
+      },
+    });
+
+    console.log(customer);
+  });
 });
