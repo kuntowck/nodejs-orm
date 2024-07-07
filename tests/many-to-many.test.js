@@ -50,4 +50,22 @@ describe("prisma client", () => {
 
     console.log(customer);
   });
+
+  it("should create implicit many to many relation", async () => {
+    const customer = await prismaClient.customer.update({
+      where: {
+        id: "kunto01",
+      },
+      data: {
+        loves: {
+          connect: [{ id: "1" }, { id: "2" }],
+        },
+      },
+      include: {
+        loves: true,
+      },
+    });
+
+    console.log(customer);
+  });
 });
