@@ -24,7 +24,7 @@ model Customer {
   email    String    @unique
   phone    String    @unique
   wallet   Wallet?
-  comments Comment[]
+  comment Comment[]
 
   @@map("customers")
 }

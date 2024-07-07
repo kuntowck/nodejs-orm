@@ -24,7 +24,7 @@ describe("prisma client", () => {
         name: "kunto",
         email: "kuntowicaksono2@gmail.com",
         phone: "0817676621123",
-        comments: {
+        comment: {
           createMany: {
             data: [
               {
@@ -40,7 +40,7 @@ describe("prisma client", () => {
         },
       },
       include: {
-        comments: true,
+        comment: true,
       },
     });
 
@@ -50,7 +50,7 @@ describe("prisma client", () => {
   it("should can find many with relaton filter", async () => {
     const customer = await prismaClient.customer.findMany({
       where: {
-        comments: {
+        comment: {
           some: {
             title: {
               contains: "komen",
@@ -59,7 +59,7 @@ describe("prisma client", () => {
         },
       },
       include: {
-        comments: true,
+        comment: true,
       },
     });
 
