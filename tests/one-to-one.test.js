@@ -39,4 +39,17 @@ describe("prisma client", () => {
 
     console.log(customer);
   });
+
+  it("should be able to find one to one", async () => {
+    const customer = await prismaClient.customer.findFirst({
+      where: {
+        id: "kunto01",
+      },
+      include: {
+        wallet: true,
+      },
+    });
+
+    console.log(customer);
+  });
 });
